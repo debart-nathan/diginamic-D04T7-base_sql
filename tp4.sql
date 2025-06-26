@@ -59,11 +59,11 @@ FROM BON B
 JOIN COMPO C ON B.ID = C.ID_BON
 GROUP BY B.ID;
 -- o. Affichez les numéros de bons de commande qui contiennent plus de 25 articles et affichez le nombre d'articles de chacun de ces bons de commande
-SELECT B.NUMERO, COUNT(C.ID_ART) AS NOMBRE_ARTICLES
+SELECT B.NUMERO, SUM(C.QTE) AS NOMBRE_ARTICLES
 FROM BON B
 JOIN COMPO C ON B.ID = C.ID_BON
 GROUP BY B.NUMERO
-HAVING COUNT(C.ID_ART) > 25;
+HAVING SUM(C.QTE) > 25;
 -- p. Calculez le coût total des commandes effectuées sur le mois d'avril
 SELECT SUM(A.PRIX * C.QTE) AS COUT_TOTAL
 FROM BON B
