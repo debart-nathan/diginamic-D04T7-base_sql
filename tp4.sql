@@ -71,7 +71,7 @@ SELECT SUM(A.PRIX * C.QTE) AS COUT_TOTAL
 FROM BON B
 JOIN COMPO C ON B.ID = C.ID_BON
 JOIN ARTICLE A ON C.ID_ART = A.ID
-WHERE B.DATE_CMDE LIKE '____-04-%';
+WHERE MONTH(B.DATE_CMDE) = 4;
 
 
 -- q. Sélectionnez les articles qui ont une désignation identique mais des fournisseurs différents (indice : réaliser une auto-jointure i.e. de la table avec elle-même)
