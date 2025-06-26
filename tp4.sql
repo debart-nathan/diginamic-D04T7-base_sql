@@ -21,11 +21,13 @@ JOIN FOURNISSEUR F ON A.ID_FOU = F.ID
 ORDER BY F.NOM, A.PRIX DESC;
 -- g. Listez les articles de la société « Dubois & Fils »
 SELECT * FROM ARTICLE
-WHERE ID_FOU = (SELECT ID FROM FOURNISSEUR WHERE NOM = 'Dubois & Fils');
+JOIN FOURNISSEUR F ON ARTICLE.ID_FOU = F.ID
+WHERE F.NOM = 'Dubois & Fils';
 -- h. Calculez la moyenne des prix des articles de la société « Dubois & Fils »
 SELECT AVG(PRIX) AS MOYENNE_PRIX
 FROM ARTICLE
-WHERE ID_FOU = (SELECT ID FROM FOURNISSEUR WHERE NOM = 'Dubois & Fils');
+JOIN FOURNISSEUR F ON ARTICLE.ID_FOU = F.ID
+WHERE F.NOM = 'Dubois & Fils';
 -- i. Calculez la moyenne des prix des articles de chaque fournisseur
 SELECT F.NOM AS NOM_FOURNISSEUR, AVG(A.PRIX) AS MOYENNE_PRIX
 FROM ARTICLE A
